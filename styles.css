@@ -30,4 +30,15 @@ a:link {
     flex-wrap: row;
     justify-content: center;
     justify-content: space-around;
+    padding: 30px;
+    text-align: center;
+}
+
+.HomePageMission {
+    padding-right: 80px;
+    padding-left: 80px;
+}
+
+.left-main {
+    padding-top: 60px;
 }

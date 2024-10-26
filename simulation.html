@@ -9,6 +9,9 @@
 
 	<title>Waste Bucket</title>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.play/1.1.0/p5.play.js"></script>
+
 	<!--Additional elements for browsers and robots go here goes here-->
 
 </head>
@@ -26,6 +29,144 @@
 	</nav>
 
 	<h3>Waste Bucket</h3>
+
+    <div id="game-container">
+        <script>
+            // Your game code here, or in a separate JS file
+            let catcher, firstFallingObject, secondFallingObject;
+            let score = 0; 
+            let catcherImg;
+            let firstFallingObjectImg;
+            let screen; 
+			let gameOver = false;
+
+            function preload() {
+                firstFallingObjectImg = loadImage("paper.png");
+                catcherImg = loadImage("recycle.png");
+                secondFallingObjectImg = loadImage("apple.png");
+            }
+
+            function setup() {
+                createCanvas(400, 400).parent('game-container'); // Attach canvas to game-container
+
+				// Create catcher sprite
+				catcher = createSprite(200, 380);
+				catcher.addImage(catcherImg);
+				catcher.scale = 0.5; // Set scale to 50%
+
+				// Create first falling object sprite
+				firstFallingObject = createSprite(random(width), 0);
+				firstFallingObject.addImage(firstFallingObjectImg);
+				firstFallingObject.scale = 0.2; // Set scale to 20%
+				firstFallingObject.velocityY = 2;
+				firstFallingObject.rotationLock = true; // Lock rotation
+
+				// Create second falling object sprite
+				secondFallingObject = createSprite(random(width), 0);
+				secondFallingObject.addImage(secondFallingObjectImg);
+				secondFallingObject.scale = 0.2; // Set scale to 20%
+				secondFallingObject.velocityY = 2;
+				secondFallingObject.rotationLock = true; // Lock rotation
+            }
+
+			function draw() {
+    			// Clear the background
+   	 			background(173, 216, 230);
+
+			// Draw instructions
+			displayInstructions();
+
+			// Check for game over
+			if (gameOver) {
+				displayGameOver();
+				return; // Exit the draw loop if game is over
+			}
+
+			// Update falling objects
+			updateFallingObjects();
+
+			// Move the catcher based on key presses
+			moveCatcher();
+
+			// Check for collisions
+			checkCollisions();
+
+			// Draw the score on the screen
+			displayScore();
+		}
+
+		// Function to display game instructions
+		function displayInstructions() {
+			fill(0);
+			textSize(12);
+			text("Move the recycling \can with the \nleft and right \narrow keys to \ncatch the falling \nobjecys, but be \nsure to not \ncatch the objects \n that are not \n recyclable.", width - 100, 20);
+		}
+
+		// Function to update falling objects
+		function updateFallingObjects() {
+			[firstFallingObject, secondFallingObject].forEach(object => {
+				if (object.y >= 400) {
+					object.y = 0;
+					object.x = random(width);
+					object.vel.y = random(1, 8); // Randomize speed upon respawning
+				}
+			});
+		}
+
+		// Function to move the catcher
+		function moveCatcher() {
+			if (keyIsDown(LEFT_ARROW)) {
+				catcher.vel.x = -3;
+			} else if (keyIsDown(RIGHT_ARROW)) {
+				catcher.vel.x = 3;
+			} else {
+				catcher.vel.x = 0;
+			}
+
+			// Stop catcher at edges of screen
+			catcher.x = constrain(catcher.x, 50, 350);
+		}
+
+		// Function to check for collisions
+		function checkCollisions() {
+			if (firstFallingObject.overlap(catcher)) {
+				score++;
+				resetFallingObject(firstFallingObject);
+			}
+
+			if (secondFallingObject.overlap(catcher)) {
+				score--;
+				resetFallingObject(secondFallingObject);
+				gameOver = score < 0; // Check for game over condition
+			}
+		}
+
+		// Function to reset falling object position
+		function resetFallingObject(object) {
+			object.y = 0;
+			object.x = random(width);
+			object.vel.y = random(1, 5); // Randomize speed
+		}
+
+		// Function to display the score
+		function displayScore() {
+			fill(0);
+			textSize(20);
+			text("Score: " + score, 10, 30);
+		}
+
+		// Function to display game over screen
+		function displayGameOver() {
+			background(255, 0, 0); // Red background for game over
+			fill(255);
+			textSize(30);
+			text("Game Over!", width / 2 - 70, height / 2);
+			textSize(20);
+			text("Final Score: " + score, width / 2 - 70, height / 2 + 30);
+		}
+        </script>
+    </div>
+
 </body>
 
 </html>
