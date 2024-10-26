@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Waste Bucket</title>
+	<title>Resources</title>
 
 	<!--Additional elements for browsers and robots go here goes here-->
 
@@ -15,17 +15,53 @@
 
 <body>
 	<nav class="navigation-bar-container">
-		<img src="ourIcon.png">
 	   <div class = "right">
 		<a class="navigation-tab" href="index.html">Home</a>
 		<a class="navigation-tab active" href="resources.html">Resources</a>
-		<a class="navigation-tab" href="pointMap.html">Point Map</a>
+		<a class="navigation-tab" href="leaderboard.html">Leaderboard</a>
 		<a class="navigation-tab" href="simulation.html">Simulation</a>
 		<a class="navigation-tab" href="aboutUs.html">About Us</a>
 	   </div>
 	</nav>
 	
-	<h3>Waste Bucket</h3>
+	<h1 id="resourcesTitle">Resources</h1>
+
+	<div class="firstStat">
+		<a href="https://www.statista.com/statistics/916625/global-generation-of-municipal-solid-waste-forecast/" target="_blank"> <img class="transition" src="barChart.png"
+			style="width: 370px; height: auto;" style="cursor: pointer;"> </a>
+		<div class = "firstStatText">
+			<h3>Global municipal solid waste generation 2020-2050</h3>
+			<p>"Municipal solid waste generation worldwide is forecast to grow more than
+				75 percent between 2020 and 2050, if no urgent action is taken. That would
+				put global waste generation at nearly 3.8 billion metric tons in the latter
+				year, up from 2.13 billion tons in 2020."</p>
+			<p>- statista.com</p>
+		</div>
+	</div>
+	<div class="secondStat">
+		<a href="https://www.electricrate.com/data-center/trash-in-america/" target="_blank"><img class="transition" src="pieChart.png" style="width: 370px; height: auto;"> </a>
+		<div class = "secondStatText">
+			<h3 class = "resourceHeader">Waste Disposal in the U.S.</h3>
+			<p>"A 2018 report from epa.gov revealed that nearly half of the waste produced in the U.S. is disposed of directly
+				in landfills. The biggest contributor to the volume of landfills was food scraps and other food waste, such as
+				supermarket discards. The best thing to do with this type of waste is to divert it to aerobic digestors, which
+				can turn it into a rich compost for use in fields and gardens."</p>
+			<p>- electricrate.com</p>
+		</div>
+	</div>
+
+	<div class = "bottomResources">
+		<div class = "wasteResource">
+		<h3>Learn More About Waste Management</h3>
+		<a href="https://www.epa.gov/emergency-response-research/waste-management" target="_blank"> <img class="transition" src="epa.png"
+			style="width: 400px; height: auto;" style="cursor: pointer;"> </a>
+		</div>
+		<div class = "recycleResource">
+			<h3>Learn How to Recyle</h3>
+			<a href="https://www.wm.com/us/en/recycle-right/recycling-101" target="_blank"> <img class="transition" src="recycling101.png"
+				style="width: 400px; height: auto;" style="cursor: pointer;"> </a>
+		</div>
+	</div>
 </body>
 
 </html>

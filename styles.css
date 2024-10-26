@@ -9,16 +9,16 @@ body {
 
 }
 .navigation-tab {
-    background-color: white;
+    background-color: #00442b;
     border-radius: 30px;
     padding: 15px;
     margin-top: 20px;
-    color: black;
+    color: white;
     font-weight: bold;
 }
 
 .navigation-tab:hover {
-    background-color: #f6f6f6;
+    background-color: #008756;
 }
 
 a:link { 
@@ -42,3 +42,120 @@ a:link {
 .left-main {
     padding-top: 60px;
 }
+
+.firstStat {
+    
+    display: flex;
+    flex-wrap: row;
+    justify-content: center;
+    justify-content: space-around;
+    padding-top: 10px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.firstStatText {
+    padding-right: 80px;
+    padding-left: 80px;
+    padding-top: 30px;
+    font-size: 
+}
+
+.secondStat {
+    display: flex;
+    flex-wrap: row;
+    flex-direction: row-reverse;
+    justify-content: center;
+    justify-content: space-around;
+    padding: 50px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.secondStatText {
+    padding-right: 80px;
+    padding-left: 80px;
+    padding-top: 60px;
+}
+
+#resourcesTitle {
+    text-align: center;
+}
+
+.bottomResources {
+    display: flex;
+    flex-wrap: row;
+    justify-content: center;
+    justify-content: space-around;
+    padding-top: 10px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.wasteResource {
+  padding-right: 80px;
+  padding-left: 80px;
+}
+
+.recycleResource {
+  padding-right: 80px;
+  padding-left: 80px;
+}
+
+.transition {
+  transition: 0.5s ease;
+}
+
+.transition:hover {
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+
+
+/* Anagha's code do not erase */
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  h1, h2 {
+    color: #333;
+  }
+  
+  .input-section {
+    margin-bottom: 20px;
+  }
+  
+  input, select, button {
+    margin: 10px 5px;
+    padding: 10px;
+    font-size: 1em;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th, table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  table th {
+    background-color: #f4f4f4;
+  }

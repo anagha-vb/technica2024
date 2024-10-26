@@ -3,170 +3,125 @@
 
 <head>
     <link rel="stylesheet" href="styles.css">
-
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>Waste Bucket</title>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.play/1.1.0/p5.play.js"></script>
-
-	<!--Additional elements for browsers and robots go here goes here-->
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Waste Bucket</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 
 <body>
-	<nav class="navigation-bar-container">
-		<img src="ourIcon.png">
-	   <div class = "right">
-		<a class="navigation-tab" href="index.html">Home</a>
-		<a class="navigation-tab" href="resources.html">Resources</a>
-		<a class="navigation-tab" href="pointMap.html">Point Map</a>
-		<a class="navigation-tab active" href="simulation.html">Simulation</a>
-		<a class="navigation-tab" href="aboutUs.html">About Us</a>
-	   </div>
-	</nav>
+    <nav class="navigation-bar-container">
+        <div class="right">
+            <a class="navigation-tab" href="index.html">Home</a>
+            <a class="navigation-tab" href="resources.html">Resources</a>
+            <a class="navigation-tab" href="leaderboard.html">Leaderboard</a>
+            <a class="navigation-tab active" href="simulation.html">Simulation</a>
+            <a class="navigation-tab" href="aboutUs.html">About Us</a>
+        </div>
+    </nav>
 
-	<h3>Waste Bucket</h3>
+    <h3>Waste Bucket</h3>
 
-    <div id="game-container">
-        <script>
-            // Your game code here, or in a separate JS file
-            let catcher, firstFallingObject, secondFallingObject;
-            let score = 0; 
-            let catcherImg;
-            let firstFallingObjectImg;
-            let screen; 
-			let gameOver = false;
+    <div id="game-container"></div>
 
-            function preload() {
-                firstFallingObjectImg = loadImage("paper.png");
-                catcherImg = loadImage("recycle.png");
-                secondFallingObjectImg = loadImage("apple.png");
+    <script>
+        let fallingObject1;
+        let fallingObject2;
+        let catcher;
+        let catcherWidth = 70; // Width of the catcher
+        let score = 0; // Initialize score
+
+        function setup() {
+            let canvas = createCanvas(400, 400);
+            canvas.parent('game-container'); // Attach canvas to game-container
+            background(173, 216, 230); // Set background color
+
+            // Initialize the falling objects
+            fallingObject1 = new FallingObject(255, 0, 0); // Red
+            fallingObject2 = new FallingObject(0, 0, 255); // Blue
+
+            // Initialize the catcher
+            catcher = {
+                x: width / 2 - catcherWidth / 2,
+                width: catcherWidth,
+                move: function(direction) {
+                    this.x += direction * 5; // Move catcher left or right
+                    this.x = constrain(this.x, 0, width - this.width); // Keep within bounds
+                }
+            };
+        }
+
+        function draw() {
+            background(173, 216, 230);
+
+            // Update and display falling objects
+            fallingObject1.update();
+            fallingObject1.display();
+
+            fallingObject2.update();
+            fallingObject2.display();
+
+            // Move the catcher based on key presses
+            if (keyIsDown(LEFT_ARROW)) {
+                catcher.move(-1); // Move left
+            }
+            if (keyIsDown(RIGHT_ARROW)) {
+                catcher.move(1); // Move right
             }
 
-            function setup() {
-                createCanvas(400, 400).parent('game-container'); // Attach canvas to game-container
-
-				// Create catcher sprite
-				catcher = createSprite(200, 380);
-				catcher.addImage(catcherImg);
-				catcher.scale = 0.5; // Set scale to 50%
-
-				// Create first falling object sprite
-				firstFallingObject = createSprite(random(width), 0);
-				firstFallingObject.addImage(firstFallingObjectImg);
-				firstFallingObject.scale = 0.2; // Set scale to 20%
-				firstFallingObject.velocityY = 2;
-				firstFallingObject.rotationLock = true; // Lock rotation
-
-				// Create second falling object sprite
-				secondFallingObject = createSprite(random(width), 0);
-				secondFallingObject.addImage(secondFallingObjectImg);
-				secondFallingObject.scale = 0.2; // Set scale to 20%
-				secondFallingObject.velocityY = 2;
-				secondFallingObject.rotationLock = true; // Lock rotation
+            // Check for collisions and update score
+            if (fallingObject1.y + fallingObject1.size / 2 >= height - 20 && 
+                fallingObject1.x >= catcher.x && 
+                fallingObject1.x <= catcher.x + catcher.width) {
+                score++; // Increase score for red object
+                fallingObject1.reset(); // Reset red object
             }
 
-			function draw() {
-    			// Clear the background
-   	 			background(173, 216, 230);
+            if (fallingObject2.y + fallingObject2.size / 2 >= height - 20 && 
+                fallingObject2.x >= catcher.x && 
+                fallingObject2.x <= catcher.x + catcher.width) {
+                score--; // Decrease score for blue object
+                fallingObject2.reset(); // Reset blue object
+            }
 
-			// Draw instructions
-			displayInstructions();
+            // Display the catcher
+            fill(0, 255, 0); // Green color for catcher
+            rect(catcher.x, height - 20, catcher.width, 10); // Draw catcher as a rectangle
 
-			// Check for game over
-			if (gameOver) {
-				displayGameOver();
-				return; // Exit the draw loop if game is over
-			}
+            // Display the score
+            fill(0);
+            textSize(20);
+            text("Score: " + score, 10, 30); // Display the score
+        }
 
-			// Update falling objects
-			updateFallingObjects();
+        class FallingObject {
+            constructor(r, g, b) {
+                this.x = random(width);
+                this.y = 0;
+                this.size = 20;
+                this.color = color(r, g, b);
+                this.speed = random(1, 3);
+            }
 
-			// Move the catcher based on key presses
-			moveCatcher();
+            update() {
+                this.y += this.speed; // Move down
+                if (this.y > height) { // Reset to top if it falls off the screen
+                    this.y = 0;
+                    this.x = random(width);
+                }
+            }
 
-			// Check for collisions
-			checkCollisions();
+            display() {
+                fill(this.color);
+                ellipse(this.x, this.y, this.size); // Draw the falling object
+            }
 
-			// Draw the score on the screen
-			displayScore();
-		}
-
-		// Function to display game instructions
-		function displayInstructions() {
-			fill(0);
-			textSize(12);
-			text("Move the recycling \can with the \nleft and right \narrow keys to \ncatch the falling \nobjecys, but be \nsure to not \ncatch the objects \n that are not \n recyclable.", width - 100, 20);
-		}
-
-		// Function to update falling objects
-		function updateFallingObjects() {
-			[firstFallingObject, secondFallingObject].forEach(object => {
-				if (object.y >= 400) {
-					object.y = 0;
-					object.x = random(width);
-					object.vel.y = random(1, 8); // Randomize speed upon respawning
-				}
-			});
-		}
-
-		// Function to move the catcher
-		function moveCatcher() {
-			if (keyIsDown(LEFT_ARROW)) {
-				catcher.vel.x = -3;
-			} else if (keyIsDown(RIGHT_ARROW)) {
-				catcher.vel.x = 3;
-			} else {
-				catcher.vel.x = 0;
-			}
-
-			// Stop catcher at edges of screen
-			catcher.x = constrain(catcher.x, 50, 350);
-		}
-
-		// Function to check for collisions
-		function checkCollisions() {
-			if (firstFallingObject.overlap(catcher)) {
-				score++;
-				resetFallingObject(firstFallingObject);
-			}
-
-			if (secondFallingObject.overlap(catcher)) {
-				score--;
-				resetFallingObject(secondFallingObject);
-				gameOver = score < 0; // Check for game over condition
-			}
-		}
-
-		// Function to reset falling object position
-		function resetFallingObject(object) {
-			object.y = 0;
-			object.x = random(width);
-			object.vel.y = random(1, 5); // Randomize speed
-		}
-
-		// Function to display the score
-		function displayScore() {
-			fill(0);
-			textSize(20);
-			text("Score: " + score, 10, 30);
-		}
-
-		// Function to display game over screen
-		function displayGameOver() {
-			background(255, 0, 0); // Red background for game over
-			fill(255);
-			textSize(30);
-			text("Game Over!", width / 2 - 70, height / 2);
-			textSize(20);
-			text("Final Score: " + score, width / 2 - 70, height / 2 + 30);
-		}
-        </script>
-    </div>
-
+            reset() {
+                this.y = 0;
+                this.x = random(width); // Reset position
+            }
+        }
+    </script>
 </body>
 
 </html>

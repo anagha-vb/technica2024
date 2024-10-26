@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<link rel="stylesheet" href="styles.css">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Leaderboard</title>
+
+	<!--Additional elements for browsers and robots go here goes here-->
+
+</head>
+
+<body>
+	<nav class="navigation-bar-container">
+		<div class="right">
+			<a class="navigation-tab" href="index.html">Home</a>
+			<a class="navigation-tab" href="resources.html">Resources</a>
+			<a class="navigation-tab active" href="leaderboard.html">Leaderboard</a>
+			<a class="navigation-tab" href="simulation.html">Simulation</a>
+			<a class="navigation-tab" href="aboutUs.html">About Us</a>
+		</div>
+	</nav>
+
+	<div class="container">
+		<h1>Leaderboard</h1>
+
+		<div class="input-section">
+			<input type="text" id="name" placeholder="Enter your name: " required>
+
+			<select id="task">
+				<option value="default" selected>Select a task</option>
+				<option value="task1">Recycled paper, cardboard, plastic, etc. [1 point]</option>
+				<option value="task2">Composted food, plants, etc. [2 points]</option>
+				<option value="task3">Donated clothes, toys, furniture, etc. [3 points]</option>
+			</select>
+
+			<button onclick="addEntry()">Submit!</button>
+		</div>
+
+
+		<h2>Leaderboard</h2>
+		<table id="leaderboard">
+			<thead>
+				<tr>
+					<th>Rank</th>
+					<th>Name</th>
+					<th>Points</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Entries will go here -->
+			</tbody>
+		</table>
+	</div>
+
+
+	<script src="leaderboard.js"></script>
+</body>
+
+</html>
