@@ -1,0 +1,33 @@
+body {
+    background-color: #e8f8da;;
+}
+
+.right {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+.navigation-tab {
+    background-color: white;
+    border-radius: 30px;
+    padding: 15px;
+    margin-top: 20px;
+    color: black;
+    font-weight: bold;
+}
+
+.navigation-tab:hover {
+    background-color: #f6f6f6;
+}
+
+a:link { 
+    text-decoration: none; 
+} 
+
+.main-page {
+    display: flex;
+    flex-wrap: row;
+    justify-content: center;
+    justify-content: space-around;
+}
