@@ -181,7 +181,8 @@ font-size: 50px;
 .about-container{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .personBox {
@@ -191,7 +192,6 @@ font-size: 50px;
   text-align:center;
 }
 
-/* Anagha's code do not erase */
 .container {
   max-width: 600px;
   margin: 50px auto;
@@ -249,4 +249,17 @@ table th {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.savyaBox{
+  padding-right: 20px;
+}
+
+.anaghaBox {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.sonayaBox {
+  padding-left: 20px;
 }
