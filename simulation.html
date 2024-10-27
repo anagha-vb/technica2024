@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Waste Bucket</title>
+    <title>Bin It To Win It</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 
@@ -68,20 +68,18 @@
             if (keyIsDown(RIGHT_ARROW)) {
                 catcher.move(1); // Move right
             }
+            
             // Assuming the falling objects have a width property
-if (fallingObject1.y + 20 >= height - 20 &&
-    fallingObject1.x + fallingObject1.width >= catcher.x && // Check if the right edge of the object is past the left edge of the catcher
-    fallingObject1.x <= catcher.x + catcher.width) {        // Check if the left edge of the object is before the right edge of the catcher
-    score++; // Increase score for Paper
-    fallingObject1.reset(); // Reset Paper
-}
+            if (fallingObject1.y + 20 >= height - 20 && Math.max(fallingObject1.x, catcher.x) <= Math.min(fallingObject1.x + fallingObject1.size, catcher.x + catcher.width)) {        // Check if the left edge of the object is before the right edge of the catcher
+                score++; // Increase score for Paper
+                fallingObject1.reset(); // Reset Paper
+            }
 
-if (fallingObject2.y + 20 >= height - 20 &&
-    fallingObject2.x + fallingObject2.width >= catcher.x && // Check if the right edge of the object is past the left edge of the catcher
-    fallingObject2.x <= catcher.x + catcher.width) {        // Check if the left edge of the object is before the right edge of the catcher
-    score--; // Decrease score for Apple
-    fallingObject2.reset(); // Reset Apple
-}
+            if (fallingObject2.y + 20 >= height - 20 && Math.max(fallingObject2.x, catcher.x) <= Math.min(fallingObject2.x + fallingObject2.size, catcher.x + catcher.width)) {        // Check if the left edge of the object is before the right edge of the catcher
+                score--; // Decrease score for Apple
+                fallingObject2.reset(); // Reset Apple
+            }
+    
 
             /*
             // Check for collisions and update score
@@ -116,7 +114,7 @@ if (fallingObject2.y + 20 >= height - 20 &&
                 this.col = col; // Store the color
                 this.x = random(width);
                 this.y = 0;
-                this.size = 20;
+                this.size = 50;
                 this.speed = random(1, 3); // Random speed between 1 and 3
             }
 
