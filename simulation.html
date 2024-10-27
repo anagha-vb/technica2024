@@ -28,25 +28,23 @@
         let fallingObject1;
         let fallingObject2;
         let catcher;
-        let catcherWidth = 70; // Width of the catcher
-        let score = 0; // Initialize score
+        let catcherWidth = 70;
+        let score = 0;
 
         function setup() {
             let canvas = createCanvas(400, 400);
-            canvas.parent('game-container'); // Attach canvas to game-container
-            background(173, 216, 230); // Set background color
+            canvas.parent('game-container');
+            background(173, 216, 230);
 
-            // Initialize the falling objects
-            fallingObject1 = new FallingObject("Paper", color(0, 255, 0)); // Green for Paper
-            fallingObject2 = new FallingObject("Apple", color(255, 0, 0)); // Red for Apple
+            fallingObject1 = new FallingObject("Paper", color(0, 255, 0));
+            fallingObject2 = new FallingObject("Apple", color(255, 0, 0));
 
-            // Initialize the catcher
             catcher = {
                 x: width / 2 - catcherWidth / 2,
                 width: catcherWidth,
                 move: function (direction) {
-                    this.x += direction * 5; // Move catcher left or right
-                    this.x = constrain(this.x, 0, width - this.width); // Keep within bounds
+                    this.x += direction * 5;
+                    this.x = constrain(this.x, 0, width - this.width);
                 }
             };
         }
@@ -54,87 +52,64 @@
         function draw() {
             background(173, 216, 230);
 
-            // Update and display falling objects
             fallingObject1.update();
             fallingObject1.display();
 
             fallingObject2.update();
             fallingObject2.display();
 
-            // Move the catcher based on key presses
             if (keyIsDown(LEFT_ARROW)) {
-                catcher.move(-1); // Move left
+                catcher.move(-1); 
             }
             if (keyIsDown(RIGHT_ARROW)) {
-                catcher.move(1); // Move right
+                catcher.move(1); 
             }
             
-            // Assuming the falling objects have a width property
             if (fallingObject1.y + 20 >= height - 20 && Math.max(fallingObject1.x, catcher.x) <= Math.min(fallingObject1.x + fallingObject1.size, catcher.x + catcher.width)) {        // Check if the left edge of the object is before the right edge of the catcher
-                score++; // Increase score for Paper
-                fallingObject1.reset(); // Reset Paper
+                score++; 
+                fallingObject1.reset(); 
             }
 
             if (fallingObject2.y + 20 >= height - 20 && Math.max(fallingObject2.x, catcher.x) <= Math.min(fallingObject2.x + fallingObject2.size, catcher.x + catcher.width)) {        // Check if the left edge of the object is before the right edge of the catcher
-                score--; // Decrease score for Apple
-                fallingObject2.reset(); // Reset Apple
+                score--; 
+                fallingObject2.reset(); 
             }
     
 
-            /*
-            // Check for collisions and update score
-            if (fallingObject1.y + 20 >= height - 20 &&
-                fallingObject1.x >= catcher.x &&
-                fallingObject1.x <= catcher.x + catcher.width) {
-                score++; // Increase score for Paper
-                fallingObject1.reset(); // Reset Paper
-            }
+            fill(0, 0, 255); 
+            rect(catcher.x, height - 20, catcher.width, 10); 
 
-            if (fallingObject2.y + 20 >= height - 20 &&
-                fallingObject2.x >= catcher.x &&
-                fallingObject2.x <= catcher.x + catcher.width) {
-                score--; // Decrease score for Apple
-                fallingObject2.reset(); // Reset Apple
-            }
-            */
-
-            // Display the catcher as a rectangle
-            fill(0, 0, 255); // Blue color
-            rect(catcher.x, height - 20, catcher.width, 10); // Draw catcher
-
-            // Display the score
             fill(0);
             textSize(20);
-            text("Score: " + score, 10, 30); // Display the score
+            text("Score: " + score, 10, 30); 
         }
-
         class FallingObject {
             constructor(text, col) {
-                this.text = text; // Store the text
-                this.col = col; // Store the color
+                this.text = text; 
+                this.col = col; 
                 this.x = random(width);
                 this.y = 0;
                 this.size = 50;
-                this.speed = random(1, 3); // Random speed between 1 and 3
+                this.speed = random(1, 3); 
             }
 
             update() {
-                this.y += this.speed; // Move down
-                if (this.y > height) { // Reset to top if it falls off the screen
-                    this.reset(); // Reset the position and speed
+                this.y += this.speed; 
+                if (this.y > height) { 
+                    this.reset(); 
                 }
             }
 
             display() {
-                fill(this.col); // Set the color for text
+                fill(this.col); 
                 textSize(20);
-                text(this.text, this.x, this.y); // Draw falling object as text   
+                text(this.text, this.x, this.y); 
             }
 
             reset() {
                 this.y = 0;
-                this.x = random(width); // Reset position
-                this.speed = random(1, 3); // Reset to a new random speed each time it resets
+                this.x = random(width);
+                this.speed = random(1, 3); 
             }
         }
     </script>
