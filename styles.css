@@ -1,109 +1,143 @@
 body {
-    background-color: #e8f8da;;
+  background-color: #e8f8da;
+  ;
 }
 
 .right {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
+
+navigation-bar-container{
+  background-color: whitesmoke;
+}
+
 .navigation-tab {
-    background-color: #00442b;
-    border-radius: 30px;
-    padding: 15px;
-    margin-top: 20px;
-    color: white;
-    font-weight: bold;
+  background-color: #00442b;
+  border-radius: 30px;
+  padding: 15px;
+  margin-top: 20px;
+  color: white;
+  font-weight: bold;
+  flex: 1;
+  max-width: 150px;
+  text-align:center;
 }
 
 .navigation-tab:hover {
-    background-color: #008756;
+  background-color: #008756;
 }
 
-a:link { 
-    text-decoration: none; 
-} 
+a:link {
+  text-decoration: none;
+}
+
+p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h3{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 .main-page {
-    display: flex;
-    flex-wrap: row;
-    justify-content: center;
-    justify-content: space-around;
-    padding: 30px;
-    text-align: center;
+  display: flex;
+  flex-wrap: row;
+  justify-content: center;
+  justify-content: space-around;
+  padding: 30px;
+  text-align: center;
 }
 
+.HomePageTitle{
+font-size: 50px;
+}
+.missionTite {
+  font-size: 25px;
+}
 .HomePageMission {
-    padding-right: 80px;
-    padding-left: 80px;
+  padding-right: 80px;
+  padding-left: 80px;
+  font-size: 20px;
 }
 
 .left-main {
-    padding-top: 60px;
+  padding-top: 80px;
+  padding-right: 20px;
+  padding-left: 50px;
+}
+
+.right-main {
+  padding-left: 20px;
+  padding-right: 50px;
 }
 
 .firstStat {
-    
-    display: flex;
-    flex-wrap: row;
-    justify-content: center;
-    justify-content: space-around;
-    padding-top: 10px;
-    padding-right: 50px;
-    padding-left: 50px;
-    padding-bottom: 10px;
-    text-align: center;
+  display: flex;
+  flex-wrap: row;
+  justify-content: center;
+  justify-content: space-around;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-bottom: 5px;
+  text-align: center;
 }
 
 .firstStatText {
-    padding-right: 80px;
-    padding-left: 80px;
-    padding-top: 30px;
-    font-size: 
+  padding-right: 80px;
+  padding-left: 80px;
 }
 
 .secondStat {
-    display: flex;
-    flex-wrap: row;
-    flex-direction: row-reverse;
-    justify-content: center;
-    justify-content: space-around;
-    padding: 50px;
-    text-align: center;
-    padding-bottom: 10px;
+  display: flex;
+  flex-wrap: row;
+  flex-direction: row-reverse;
+  justify-content: center;
+  justify-content: space-around;
+  padding: 50px;
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 .secondStatText {
-    padding-right: 80px;
-    padding-left: 80px;
-    padding-top: 60px;
+  padding-right: 80px;
+  padding-left: 80px;
+  padding-top: 50px;
 }
 
 #resourcesTitle {
-    text-align: center;
+  padding-top: 5px;
+  text-align: center;
 }
 
 .bottomResources {
-    display: flex;
-    flex-wrap: row;
-    justify-content: center;
-    justify-content: space-around;
-    padding-top: 10px;
-    padding-right: 50px;
-    padding-left: 50px;
-    padding-bottom: 10px;
-    text-align: center;
+  display: flex;
+  flex-wrap: row;
+  justify-content: center;
+  justify-content: space-around;
+  padding-top: 10px;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-bottom: 30px;
+  text-align: center;
 }
 
 .wasteResource {
-  padding-right: 80px;
-  padding-left: 80px;
+  padding-right: 20px;
+  padding-left: 50px;
 }
 
 .recycleResource {
-  padding-right: 80px;
-  padding-left: 80px;
+  padding-right: 50px;
+  padding-left: 20px;
 }
 
 .transition {
@@ -115,47 +149,104 @@ a:link {
   cursor: pointer;
 }
 
+.creators {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%; 
+  height: 400px;  
+}
+.resourceHeader {
+  font-size: 25px;
+}
+.resourceInfo {
+  font-size: 20px;
+}
 
+.middleSpaceRight {
+  padding-right: 10px;
+}
+
+.middleSpaceRight {
+  padding-left: 10px;
+}
+
+.leadershipTitle {
+  text-align: center;
+}
+
+.about-title{
+  text-align: center;
+}
+
+.about-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.personBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align:center;
+}
 
 /* Anagha's code do not erase */
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-* {
-    box-sizing: border-box;
-  }
-  
-  .container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  h1, h2 {
-    color: #333;
-  }
-  
-  .input-section {
-    margin-bottom: 20px;
-  }
-  
-  input, select, button {
-    margin: 10px 5px;
-    padding: 10px;
-    font-size: 1em;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  table th, table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-  }
-  
-  table th {
-    background-color: #f4f4f4;
-  }
+h1,
+h2 {
+  color: #333;
+}
+
+.input-section {
+  margin-bottom: 20px;
+}
+
+input,
+select,
+button {
+  margin: 10px 5px;
+  padding: 10px;
+  font-size: 1em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f4f4f4;
+}
+
+#game-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.simulationTitle {
+  text-align: center;
+}
+
+.gameDirections {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
