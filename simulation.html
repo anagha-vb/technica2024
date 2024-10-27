@@ -68,7 +68,22 @@
             if (keyIsDown(RIGHT_ARROW)) {
                 catcher.move(1); // Move right
             }
+            // Assuming the falling objects have a width property
+if (fallingObject1.y + 20 >= height - 20 &&
+    fallingObject1.x + fallingObject1.width >= catcher.x && // Check if the right edge of the object is past the left edge of the catcher
+    fallingObject1.x <= catcher.x + catcher.width) {        // Check if the left edge of the object is before the right edge of the catcher
+    score++; // Increase score for Paper
+    fallingObject1.reset(); // Reset Paper
+}
 
+if (fallingObject2.y + 20 >= height - 20 &&
+    fallingObject2.x + fallingObject2.width >= catcher.x && // Check if the right edge of the object is past the left edge of the catcher
+    fallingObject2.x <= catcher.x + catcher.width) {        // Check if the left edge of the object is before the right edge of the catcher
+    score--; // Decrease score for Apple
+    fallingObject2.reset(); // Reset Apple
+}
+
+            /*
             // Check for collisions and update score
             if (fallingObject1.y + 20 >= height - 20 &&
                 fallingObject1.x >= catcher.x &&
@@ -83,6 +98,7 @@
                 score--; // Decrease score for Apple
                 fallingObject2.reset(); // Reset Apple
             }
+            */
 
             // Display the catcher as a rectangle
             fill(0, 0, 255); // Blue color
@@ -114,7 +130,7 @@
             display() {
                 fill(this.col); // Set the color for text
                 textSize(20);
-                text(this.text, this.x, this.y); // Draw falling object as text
+                text(this.text, this.x, this.y); // Draw falling object as text   
             }
 
             reset() {
