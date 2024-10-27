@@ -16,6 +16,6 @@ We created a project focused on raising awareness about proper waste disposal. O
 ## How We Built the Project & Challenges 🔨
 We built the project using HTML, CSS, and JavaScript. At first, we faced challenges figuring out how to avoid merge conflicts when committing changes to the repository in GitHub. We also had issues with the game, where the catcher didn't always catch the falling objects. After some late-night debugging, we realized the problem was with how we checked a specific collision area of the catcher. We also made adjustments to ensure that ties on the leaderboard were handled correctly by using different conditional statements.
 
-## What's Next
+## What's Next 🔮
 Looking ahead, we plan to improve the game by using images of items like paper and apples, increasing the variety and frequency of falling objects, and allowing users to choose different catcher options, such as a trash can, compost bin, or recycling bin. We also want to add a game-ending condition where the player loses if their score drops to zero, and we also want to include a podium for the current three highest scorers.
 
