@@ -9,8 +9,8 @@ We created a project focused on raising awareness about proper waste disposal. O
 ## Pages and Features 📄
 1. Home
 2. Resources
-3. Simulation Game
-4. Leaderboard
+3. Leaderboard
+4. Simulation Game
 5. About Us
 
 ## How We Built the Project & Challenges 🔨
